@@ -161,6 +161,68 @@ Test your endpoints using Postman or curl:
 
 ---
 
+## API Reference
+
+Base URL: `http://localhost:5000`
+
+### `POST /events`
+
+Create a new event.
+
+Request body:
+
+```json
+{ "title": "Hackathon" }
+```
+
+Success response — `201 Created`:
+
+```json
+{ "id": 3, "title": "Hackathon" }
+```
+
+Error response (missing `title`) — `400 Bad Request`:
+
+```json
+{ "error": "A 'title' field is required" }
+```
+
+### `PATCH /events/<id>`
+
+Update the title of an existing event.
+
+Request body:
+
+```json
+{ "title": "Hackathon 2025" }
+```
+
+Success response — `200 OK`:
+
+```json
+{ "id": 1, "title": "Hackathon 2025" }
+```
+
+Error response (event not found) — `404 Not Found`:
+
+```json
+{ "error": "Event with id 99 not found" }
+```
+
+### `DELETE /events/<id>`
+
+Remove an event.
+
+Success response — `204 No Content` (empty body)
+
+Error response (event not found) — `404 Not Found`:
+
+```json
+{ "error": "Event with id 99 not found" }
+```
+
+---
+
 ## Conclusion
 
 After completing this lab, you will:
